@@ -16,3 +16,4 @@ venv/
 models/*.joblib
 reports/*.json
 reports/*.png
+*.egg-info/
