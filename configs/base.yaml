@@ -1,0 +1,14 @@
+data:
+  path: data/raw/heart.csv
+  target_col: HeartDisease
+  test_size: 0.2
+  random_state: 42
+
+training:
+  model: logistic_regression   # options: logistic_regression | svm | random_forest
+  cv_folds: 5
+  scoring: roc_auc
+
+output:
+  model_path: models/pipeline.joblib
+  metrics_path: reports/metrics.json
