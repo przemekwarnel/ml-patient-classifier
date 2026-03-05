@@ -20,7 +20,7 @@ def build_model(name: str):
         return SVC(probability=True)
 
     if name == "random_forest":
-        return RandomForestClassifier()
+        return RandomForestClassifier(random_state=42)
 
     raise ValueError(
         f"Unknown model '{name}'. Valid: logistic_regression | svm | random_forest"
