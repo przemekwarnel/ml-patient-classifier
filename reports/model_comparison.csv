@@ -1,0 +1,4 @@
+model,best_cv_score,auc,accuracy,precision,recall,f1,best_params
+random_forest,0.9339752749508847,0.933405069344811,0.9021739130434783,0.8962264150943396,0.9313725490196079,0.9134615384615384,"{""model__class_weight"": ""balanced"", ""model__max_depth"": null, ""model__min_samples_split"": 10, ""model__n_estimators"": 200}"
+logistic_regression,0.9255261249841196,0.9316116690578671,0.9130434782608695,0.9134615384615384,0.9313725490196079,0.9223300970873787,"{""model__C"": 0.1, ""model__class_weight"": ""balanced"", ""model__penalty"": ""l2"", ""model__solver"": ""lbfgs""}"
+svm,0.9243515412621104,0.9494261119081778,0.8913043478260869,0.8867924528301887,0.9215686274509803,0.9038461538461539,"{""model__C"": 1.0, ""model__class_weight"": null, ""model__kernel"": ""rbf""}"

@@ -1,0 +1,5 @@
+| model               |   best_cv_score |      auc |   accuracy |   precision |   recall |       f1 | best_params                                                                                                               |
+|:--------------------|----------------:|---------:|-----------:|------------:|---------:|---------:|:--------------------------------------------------------------------------------------------------------------------------|
+| random_forest       |        0.933975 | 0.933405 |   0.902174 |    0.896226 | 0.931373 | 0.913462 | {"model__class_weight": "balanced", "model__max_depth": null, "model__min_samples_split": 10, "model__n_estimators": 200} |
+| logistic_regression |        0.925526 | 0.931612 |   0.913043 |    0.913462 | 0.931373 | 0.92233  | {"model__C": 0.1, "model__class_weight": "balanced", "model__penalty": "l2", "model__solver": "lbfgs"}                    |
+| svm                 |        0.924352 | 0.949426 |   0.891304 |    0.886792 | 0.921569 | 0.903846 | {"model__C": 1.0, "model__class_weight": null, "model__kernel": "rbf"}                                                    |
