@@ -17,3 +17,5 @@ models/*.joblib
 reports/*.json
 reports/*.png
 *.egg-info/
+
+reports/temp_*.yaml
