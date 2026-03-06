@@ -43,11 +43,13 @@ def evaluate(config_path: str, threshold: float | None, min_recall: float | None
         raise ValueError("Could not determine threshold. Provide --threshold or --min-recall.")
 
     pred = (proba >= selected_threshold).astype(int)
+    tp = ((y_test == 1) & (pred == 1)).sum()
+    tn = ((y_test == 0) & (pred == 0)).sum()
+    fp = ((y_test == 0) & (pred == 1)).sum()
+    fn = ((y_test == 1) & (pred == 0)).sum()    
 
     if min_recall is not None:
-    # compute recall for selected threshold
-        tp = ((y_test.to_numpy() == 1) & (pred == 1)).sum()
-        fn = ((y_test.to_numpy() == 1) & (pred == 0)).sum()
+        # compute recall for selected threshold
         achieved_recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
 
         if achieved_recall < min_recall:
@@ -58,7 +60,11 @@ def evaluate(config_path: str, threshold: float | None, min_recall: float | None
 
     metrics = {
         "threshold": float(selected_threshold),
-        "min_recall": (float(min_recall) if min_recall is not None else None),      
+        "min_recall": (float(min_recall) if min_recall is not None else None),
+        "tp": int(tp),
+        "tn": int(tn),
+        "fp": int(fp),
+        "fn": int(fn),        
         "accuracy": float(accuracy_score(y_test, pred)),
         "precision": float(precision_score(y_test, pred, zero_division=0)),
         "recall": float(recall_score(y_test, pred, zero_division=0)),
