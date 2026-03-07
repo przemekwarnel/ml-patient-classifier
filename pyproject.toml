@@ -9,7 +9,9 @@ dependencies = [
   "scikit-learn",
   "pyyaml",
   "joblib",
-  "matplotlib"
+  "matplotlib",
+  "seaborn",
+  "tabulate"
 ]
 
 [project.optional-dependencies]

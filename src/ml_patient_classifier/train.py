@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 
 import joblib # type: ignore
 from sklearn.metrics import (
@@ -21,7 +22,7 @@ from ml_patient_classifier.preprocessing import build_preprocessor
 from ml_patient_classifier.tuning import get_param_grid
 
 
-def train(config_path: str) -> dict:
+def train(config_path: str | Path) -> dict:
     cfg = load_config(config_path)
 
     df = load_dataframe(cfg.data.path)
