@@ -43,6 +43,7 @@ def main() -> None:
     validate_input(record, expected_columns)
 
     X = pd.DataFrame([record])
+    X = X[expected_columns]
 
     # predict_proba returns shape (n_samples, n_classes)
     # [0, 1] -> first sample, probability of positive class 

@@ -174,12 +174,12 @@ This evaluates screening scenarios with different recall constraints and saves t
 ### Local inference
 
 ```zsh
-python -m ml_patient_classifier.predict.py --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
+python -m ml_patient_classifier.predict --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
 ```
 
 This runs prediction for a single patient using the saved trained pipeline. 
 
-Example output
+Example output:
 
 ```json
 {
