@@ -59,16 +59,17 @@ ml-patient-classifier
 │ └── base.yaml # training configuration
 │
 ├── data
-│ └── raw
-│ └── heart.csv # dataset
+│ ├── raw
+│ │ └── heart.csv # dataset
+│ └── sample_patient.json # example input for inference
 │
 ├── reports # generated evaluation artifacts
-│   ├── model_comparison.*
-│   ├── threshold_comparison.*
-│   ├── roc_curve.png
-│   ├── confusion_matrix.png
-│   ├── metrics.json
-│   └── eval_metrics.json
+│ ├── model_comparison.*
+│ ├── threshold_comparison.*
+│ ├── roc_curve.png
+│ ├── confusion_matrix.png
+│ ├── metrics.json
+│ └── eval_metrics.json
 │
 ├── src
 │ └── ml_patient_classifier
@@ -76,6 +77,7 @@ ml-patient-classifier
 │ ├── data.py
 │ ├── preprocessing.py
 │ ├── modeling.py
+│ ├── predict.py
 │ ├── tuning.py
 │ ├── train.py
 │ ├── evaluate.py
@@ -166,6 +168,27 @@ python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
 ```
 
 This evaluates screening scenarios with different recall constraints and saves the results to reports/threshold_comparison.*.
+
+---
+
+### Local inference
+
+```zsh
+python -m ml_patient_classifier.predict.py --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
+```
+
+This runs prediction for a single patient using the saved trained pipeline. 
+
+Example output
+
+```json
+{
+  "prediction": 0,
+  "label": "healthy",
+  "probability_positive_class": 0.0972348894346362,
+  "threshold": 0.5
+}
+```
 
 ## Modeling Approach
 
