@@ -63,55 +63,49 @@ ml-patient-classifier
 │ │ └── heart.csv # dataset
 │ └── sample_patient.json # example input for inference
 │
-├── reports # generated evaluation artifacts
-│ ├── model_comparison.*
-│ ├── threshold_comparison.*
-│ ├── roc_curve.png
-│ ├── confusion_matrix.png
-│ ├── metrics.json
-│ └── eval_metrics.json
-│
-├── src
-│ └── ml_patient_classifier
-│ ├── config.py
-│ ├── data.py
-│ ├── preprocessing.py
-│ ├── modeling.py
-│ ├── predict.py
-│ ├── tuning.py
-│ ├── train.py
-│ ├── evaluate.py
-│ ├── compare_models.py
-│ └── threshold_analysis.py
-│
 ├── notebooks
 │ └── analysis.ipynb # exploratory analysis
 │
-├── models # trained models
+├── reports # generated evaluation artifacts
+│ ├── model_comparison.*
+│ ├── threshold_comparison.*
+│
+├── src
+│ └── ml_patient_classifier
+│ ├── compare_models.py
+│ ├── config.py
+│ ├── data.py
+│ ├── evaluate.py
+│ ├── modeling.py
+│ ├── predict.py
+│ ├── preprocessing.py
+│ ├── threshold_analysis.py
+│ ├── thresholds.py
+│ ├── train.py
+│ └── tuning.py
 │
 ├── tests
 │ └── test_data.py # basic data loading sanity test
 │
 ├── .gitignore
-├── pyproject.toml
-└── README.md
+├── LICENSE
+├── README.md
+└── pyproject.toml
 ```
 
 ## Installation
 
 Clone the repository and create a virtual environment:
 
-```zsh
-git clone <repo-url>
-cd ml-patient-classifier
-
+```bash
+git clone https://github.com/przemekwarnel/ml-patient-classifier.git)cd ml-patient-classifier
 python -m venv .venv
 source .venv/bin/activate
 ```
 
 Install dependencies:
 
-```zsh
+```bash
 pip install -e ".[dev]"
 ```
 
@@ -119,7 +113,7 @@ pip install -e ".[dev]"
 
 ### Train the model
 
-```zsh
+```bash
 python -m ml_patient_classifier.train --config configs/base.yaml
 ```
 
@@ -133,7 +127,7 @@ This will:
 
 ### Evaluate the model 
 
-```zsh
+```bash
 python -m ml_patient_classifier.evaluate --config configs/base.yaml
 ```
 
@@ -147,7 +141,7 @@ This generates:
 
 ### Compare candidate models 
 
-```zsh
+```bash
 python -m ml_patient_classifier.compare_models --config configs/base.yaml
 ```
 
@@ -163,7 +157,7 @@ and saves results to reports/model_comparison.*.
 
 ### Run threshold analysis 
 
-```zsh
+```bash
 python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
 ```
 
@@ -173,7 +167,7 @@ This evaluates screening scenarios with different recall constraints and saves t
 
 ### Local inference
 
-```zsh
+```bash
 python -m ml_patient_classifier.predict --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
 ```
 
@@ -212,7 +206,7 @@ Using a pipeline prevents **data leakage** between training and evaluation stage
 
 Model training is implemented as a CLI command:
 
-```zsh
+```bash
 python -m ml_patient_classifier.train --config configs/base.yaml
 ```
 
