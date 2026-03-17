@@ -15,6 +15,14 @@ The project demonstrates an end-to-end applied machine learning workflow, includ
 
 The final model is selected based on cross-validated performance and evaluated under different decision thresholds to reflect real-world screening constraints.
 
+## Tech Stack
+
+- **Python**
+- **pandas / NumPy** — data processing
+- **scikit-learn** — machine learning models and pipelines
+- **Matplotlib / Seaborn** — data visualization
+- **JSON** — local inference input format
+
 ## Dataset
 
 The dataset contains **918 patient observations** with **11 clinical features** used to predict the presence of disease.
