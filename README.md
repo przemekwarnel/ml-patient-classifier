@@ -15,6 +15,14 @@ The project demonstrates an end-to-end applied machine learning workflow, includ
 
 The final model is selected based on cross-validated performance and evaluated under different decision thresholds to reflect real-world screening constraints.
 
+## Key Features
+
+- End-to-end machine learning pipeline for patient classification
+- Data preprocessing using scikit-learn pipelines
+- Logistic Regression baseline model
+- Model evaluation using standard classification metrics
+- Local inference on new patient data via JSON input
+  
 ## Tech Stack
 
 - **Python**
