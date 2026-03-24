@@ -71,37 +71,36 @@ Threshold tuning is used to adjust the classifier for different screening scenar
 ```
 ml-patient-classifier
 │
-├── configs
-│ └── base.yaml # training configuration
+├── configs                       # configuration files
 │
 ├── data
-│ ├── raw
-│ │ └── heart.csv # dataset
-│ └── sample_patient.json # example input for inference
+│   ├── raw
+│   │   └── heart.csv             # dataset
+│   └── sample_patient.json       # example input for inference
 │
 ├── notebooks
-│ └── analysis.ipynb # exploratory analysis
+│   └── analysis.ipynb            # exploratory analysis
 │
-├── reports # generated evaluation artifacts
-│ ├── model_comparison.*
-│ ├── threshold_comparison.*
+├── reports                       # generated evaluation artifacts
+│   ├── model_comparison.*
+│   └── threshold_comparison.*
 │
 ├── src
-│ └── ml_patient_classifier
-│ ├── compare_models.py
-│ ├── config.py
-│ ├── data.py
-│ ├── evaluate.py
-│ ├── modeling.py
-│ ├── predict.py
-│ ├── preprocessing.py
-│ ├── threshold_analysis.py
-│ ├── thresholds.py
-│ ├── train.py
-│ └── tuning.py
+│   └── ml_patient_classifier
+│       ├── compare_models.py
+│       ├── config.py
+│       ├── data.py
+│       ├── evaluate.py
+│       ├── modeling.py
+│       ├── predict.py
+│       ├── preprocessing.py
+│       ├── threshold_analysis.py
+│       ├── thresholds.py
+│       ├── train.py
+│       └── tuning.py
 │
 ├── tests
-│ └── test_data.py # basic data loading sanity test
+│   └── test_data.py              # basic data loading sanity test
 │
 ├── .gitignore
 ├── LICENSE
@@ -109,98 +108,7 @@ ml-patient-classifier
 └── pyproject.toml
 ```
 
-## Installation
-
-Clone the repository and create a virtual environment:
-
-```bash
-git clone https://github.com/przemekwarnel/ml-patient-classifier.git)cd ml-patient-classifier
-python -m venv .venv
-source .venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
-pip install -e ".[dev]"
-```
-
-## How to Run
-
-### Train the model
-
-```bash
-python -m ml_patient_classifier.train --config configs/base.yaml
-```
-
-This will:
-
-- train the model using cross-validation
-- save the trained pipeline to models/
-- store training metrics
-
----
-
-### Evaluate the model 
-
-```bash
-python -m ml_patient_classifier.evaluate --config configs/base.yaml
-```
-
-This generates:
-
-- ROC curve
-- confusion matrix
-- evaluation metrics
-
----
-
-### Compare candidate models 
-
-```bash
-python -m ml_patient_classifier.compare_models --config configs/base.yaml
-```
-
-This compares:
-
-- Logistic Regression
-- Support Vector Machine
-- Random forest
-
-and saves results to reports/model_comparison.*.
-
----
-
-### Run threshold analysis 
-
-```bash
-python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
-```
-
-This evaluates screening scenarios with different recall constraints and saves the results to reports/threshold_comparison.*.
-
----
-
-### Local inference
-
-```bash
-python -m ml_patient_classifier.predict --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
-```
-
-This runs prediction for a single patient using the saved trained pipeline. 
-
-Example output:
-
-```json
-{
-  "prediction": 0,
-  "label": "healthy",
-  "probability_positive_class": 0.0972348894346362,
-  "threshold": 0.5
-}
-```
-
-## Modeling Approach
+## Methodology
 
 The project follows a structured machine learning workflow designed to produce reproducible and leakage-safe experiments.
 
@@ -215,8 +123,6 @@ The preprocessing pipeline includes:
 - categorical feature encoding (when applicable)
 
 Using a pipeline prevents **data leakage** between training and evaluation stages.
-
----
 
 ### Model training
 
@@ -234,8 +140,6 @@ Training uses:
 
 The primary model selection metric is ROC-AUC, which measures the model's ability to rank diseased patients above healthy ones.
 
----
-
 ### Candidate models
 
 Three candidate algorithms were evaluated:
@@ -245,8 +149,6 @@ Three candidate algorithms were evaluated:
 - Random Forest
 
 Each model was trained using the same preprocessing pipeline and evaluated under identical cross-validation settings to ensure fair comparison.
-
----
 
 ### Reproducible configuration
 
@@ -343,7 +245,88 @@ This project demonstrates an applied machine learning workflow including:
 
 The project emphasizes **interpretability, reproducibility, and practical decision-making**, which are critical in real-world ML systems.
 
-## Future Improvements
+## How to Run
+
+Clone the repository and create a virtual environment:
+
+```bash
+git clone https://github.com/przemekwarnel/ml-patient-classifier.git)cd ml-patient-classifier
+python -m venv .venv
+source .venv/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -e ".[dev]"
+```
+
+Train the model:
+
+```bash
+python -m ml_patient_classifier.train --config configs/base.yaml
+```
+
+This will:
+
+- train the model using cross-validation
+- save the trained pipeline to models/
+- store training metrics
+
+Evaluate the model 
+
+```bash
+python -m ml_patient_classifier.evaluate --config configs/base.yaml
+```
+
+This generates:
+
+- ROC curve
+- confusion matrix
+- evaluation metrics
+
+Compare candidate models 
+
+```bash
+python -m ml_patient_classifier.compare_models --config configs/base.yaml
+```
+
+This compares:
+
+- Logistic Regression
+- Support Vector Machine
+- Random forest
+
+and saves results to reports/model_comparison.*.
+
+Run threshold analysis 
+
+```bash
+python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
+```
+
+This evaluates screening scenarios with different recall constraints and saves the results to reports/threshold_comparison.*.
+
+Run local inference:
+
+```bash
+python -m ml_patient_classifier.predict --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
+```
+
+This runs prediction for a single patient using the saved trained pipeline. 
+
+Example output:
+
+```json
+{
+  "prediction": 0,
+  "label": "healthy",
+  "probability_positive_class": 0.0972348894346362,
+  "threshold": 0.5
+}
+```
+
+## Future Work
 
 Possible extensions of the project include:
 
