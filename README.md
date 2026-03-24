@@ -247,22 +247,22 @@ The project emphasizes **interpretability, reproducibility, and practical decisi
 
 ## How to Run
 
-Clone the repository and create a virtual environment:
+### Clone the repository and create a virtual environment
 
 ```bash
-git clone https://github.com/przemekwarnel/ml-patient-classifier.git)
+git clone https://github.com/przemekwarnel/ml-patient-classifier.git
 cd ml-patient-classifier
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-Install dependencies:
+### Install dependencies
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-Train the model:
+### Train the model
 
 ```bash
 python -m ml_patient_classifier.train --config configs/base.yaml
@@ -274,7 +274,7 @@ This will:
 - save the trained pipeline to models/
 - store training metrics
 
-Evaluate the model 
+### Evaluate the model
 
 ```bash
 python -m ml_patient_classifier.evaluate --config configs/base.yaml
@@ -286,7 +286,7 @@ This generates:
 - confusion matrix
 - evaluation metrics
 
-Compare candidate models 
+### Compare candidate models
 
 ```bash
 python -m ml_patient_classifier.compare_models --config configs/base.yaml
@@ -300,7 +300,7 @@ This compares:
 
 and saves results to reports/model_comparison.*.
 
-Run threshold analysis 
+### Run threshold analysis 
 
 ```bash
 python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
@@ -308,7 +308,7 @@ python -m ml_patient_classifier.threshold_analysis --config configs/base.yaml
 
 This evaluates screening scenarios with different recall constraints and saves the results to reports/threshold_comparison.*.
 
-Run local inference:
+### Run local inference
 
 ```bash
 python -m ml_patient_classifier.predict --input data/sample_patient.json --model models/pipeline.joblib --threshold 0.5
