@@ -250,7 +250,8 @@ The project emphasizes **interpretability, reproducibility, and practical decisi
 Clone the repository and create a virtual environment:
 
 ```bash
-git clone https://github.com/przemekwarnel/ml-patient-classifier.git)cd ml-patient-classifier
+git clone https://github.com/przemekwarnel/ml-patient-classifier.git)
+cd ml-patient-classifier
 python -m venv .venv
 source .venv/bin/activate
 ```
