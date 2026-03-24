@@ -245,9 +245,9 @@ This project demonstrates an applied machine learning workflow including:
 
 The project emphasizes **interpretability, reproducibility, and practical decision-making**, which are critical in real-world ML systems.
 
-## How to Run
+## Installation
 
-### Clone the repository and create a virtual environment
+Clone the repository and create a virtual environment:
 
 ```bash
 git clone https://github.com/przemekwarnel/ml-patient-classifier.git
@@ -256,11 +256,12 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-### Install dependencies
+Install dependencies:
 
 ```bash
 pip install -e ".[dev]"
 ```
+## How to Run
 
 ### Train the model
 
